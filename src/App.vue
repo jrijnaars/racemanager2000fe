@@ -1,6 +1,9 @@
 <template>
   <div id="app">
+    <h1 class="header">Welcome to Race Manager 2000</h1>
+    <create-car></create-car>
     <car-list v-bind:cars="cars"></car-list>
+
   </div>
 </template>
 
@@ -9,10 +12,12 @@
 
 
   import CarList from "@/components/CarList";
+  import CreateCar from "@/components/CreateCar";
 
   export default {
     name: 'App',
     components: {
+      CreateCar,
       CarList,
     },
     data() {
@@ -39,5 +44,13 @@
 </script>
 
 <style>
+body {
+  background-image: url("./assets/zandvoort.png");
+  margin:0 auto;
+}
 
+h1 {
+color: aliceblue;
+  text-align: center;
+  }
 </style>

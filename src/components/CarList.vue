@@ -4,16 +4,17 @@
       <h2 class="h2">Drivers</h2>
       <car v-for="car in cars" :key="car.id" v-bind:car="car"></car>
     </div>
-    <b-button class="button">New driver</b-button>
   </div>
 </template>
 
 <script>
 
   import Car from "@/components/Car";
+  import CreateCar from "@/components/CreateCar";
 
   export default {
-    components: {Car},
+    components: {Car,
+    CreateCar},
     props: ['cars'],
     name: "CarList",
   }
@@ -22,10 +23,9 @@
 <style>
 h2 {
   width: 100%;
-  padding: 20px;
-  color: #212529;
-  background-color: #ECECEC;
+  color: aliceblue;
   text-align: center;
+  margin: 10px 10px 10px 10px;
 }
 
 button {
