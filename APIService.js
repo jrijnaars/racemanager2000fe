@@ -15,8 +15,11 @@ export class APIService {
   }
 
   // post -> /cars
-  static createCar() {
+  static createCar(car) {
+    const url = `${API_URL}/cars/`;
 
+    return axios.post(url, car).then(response => response.data)
+      .catch((error => error.data));
   }
   // get -> /cars/{id}
   static getCar(id) {

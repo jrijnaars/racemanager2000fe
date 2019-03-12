@@ -21,7 +21,4 @@
 </script>
 
 <style>
-.ui.centered.card {
-  margin-top: 10px;
-}
 </style>
