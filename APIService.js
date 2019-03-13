@@ -18,8 +18,11 @@ export class APIService {
   static createCar(car) {
     const url = `${API_URL}/cars/`;
 
-    return axios.post(url, car).then(response => response.data)
-      .catch((error => error.data));
+    try {
+      return axios.post(url, car).then(response => response.data)
+    } catch (error) {
+      return error;
+    }
   }
   // get -> /cars/{id}
   static getCar(id) {

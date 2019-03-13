@@ -15,7 +15,7 @@
                 v-model="form.carname"
                 required
                 placeholder="Enter name"/>
-              <b-alert show variant="danger" v-show="alreadyCreated">Danger Alert</b-alert>
+              <b-alert show variant="danger" v-show="alreadyCreated">Driver is already created</b-alert>
             </b-form-group>
             <b-button type="submit" variant="primary">Create</b-button>
             <b-button type="reset" variant="danger">Reset</b-button>
@@ -52,9 +52,13 @@
         response: [],
         showResponse: false,
         error: [],
+        errorText: {
+          status: "Request failed with status code 500"
+        },
         alreadyCreated: false,
       };
     },
+
     methods: {
       onSubmit(evt) {
         evt.preventDefault();
@@ -64,19 +68,23 @@
           this.showResponse = true;
         }).catch((error) => {
           this.error = error;
-          this.alreadyCreated = true;
-        })
+          if (this.errorText.status === error.message) {
+            this.alreadyCreated = true;
+          }
+        });
       },
+
       onReset(evt) {
         evt.preventDefault();
         /* Reset our form values */
         this.form.carname = '';
+        this.alreadyCreated = false;
         /* Trick to reset/clear native browser form validation state */
         this.show = false;
         this.$nextTick(() => {
           this.show = true;
         })
-      }
+      },
     }
   }
 </script>
