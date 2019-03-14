@@ -13,22 +13,24 @@
   import CreateCar from "@/components/CreateCar";
 
   export default {
-    components: {Car,
-    CreateCar},
-    props: ['cars'],
     name: "CarList",
+    components: {
+      Car,
+      CreateCar
+    },
+    props: ['cars'],
   }
 </script>
 
 <style>
-h2 {
-  width: 100%;
-  color: aliceblue;
-  text-align: center;
-  margin: 10px 10px 10px 10px;
-}
+  h2 {
+    width: 100%;
+    color: aliceblue;
+    text-align: center;
+    margin: 10px 10px 10px 10px;
+  }
 
-button {
-  margin-left: 10px;
+  button {
+    margin-left: 10px;
   }
 </style>

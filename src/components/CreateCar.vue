@@ -39,6 +39,7 @@
 
 <script>
   import {APIService} from "../../APIService";
+  import {EventBus} from "../../event-bus";
 
   export default {
     name: "CreateCar",
@@ -66,6 +67,7 @@
         APIService.createCar(this.form).then((data) => {
           this.response = data;
           this.showResponse = true;
+          EventBus.$emit("refresh-carlist", {});
         }).catch((error) => {
           this.error = error;
           if (this.errorText.status === error.message) {

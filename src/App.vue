@@ -13,6 +13,7 @@
 
   import CarList from "@/components/CarList";
   import CreateCar from "@/components/CreateCar";
+  import {EventBus} from "../event-bus";
 
   export default {
     name: 'App',
@@ -36,6 +37,7 @@
 
     mounted() {
       this.getAllCars();
+      EventBus.$on('refresh-carlist', this.getAllCars)
     },
 
 
