@@ -24,19 +24,8 @@
       </b-collapse>
     </b-card>
 
-    <b-card no-body class="mb-1" v-show="showResponse">
-      <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block href="#" v-b-toggle.newDriver variant="info">newly created driver: {{response.name}}</b-button>
-      </b-card-header>
-      <b-collapse id="newDriver" accordion="my-accordion" role="tabpanel">
-        <b-card-body>
-          <p class="card-text">engine: {{response.engine}} chassis: {{response.chassis}} </p>
-        </b-card-body>
-      </b-collapse>
-    </b-card>
   </div>
 </template>
-
 <script>
   import {APIService} from "../../APIService";
   import {EventBus} from "../../event-bus";
@@ -49,9 +38,11 @@
         form: {
           carname: '',
         },
+        submittedForm: {
+          carname: "",
+        },
         show: true,
         response: [],
-        showResponse: false,
         error: [],
         errorText: {
           status: "Request failed with status code 500"
@@ -62,18 +53,20 @@
 
     methods: {
       onSubmit(evt) {
-        evt.preventDefault();
-
-        APIService.createCar(this.form).then((data) => {
+        this.submittedForm = this.form;
+        APIService.createCar(this.submittedForm).then((data) => {
           this.response = data;
-          this.showResponse = true;
           EventBus.$emit("refresh-carlist", {});
+          this.alreadyCreated = false;
+          this.form = "";
         }).catch((error) => {
           this.error = error;
           if (this.errorText.status === error.message) {
             this.alreadyCreated = true;
           }
         });
+
+        evt.preventDefault();
       },
 
       onReset(evt) {
