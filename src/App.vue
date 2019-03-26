@@ -5,16 +5,10 @@
 </template>
 
 <script>
-  import CarList from "@/components/CarList";
-  import CreateCar from "@/components/CreateCar";
-  import NavBar from "@/components/NavBar";
 
   export default {
     name: 'App',
     components: {
-      NavBar,
-      CreateCar,
-      CarList,
     },
   };
 </script>
@@ -26,8 +20,5 @@ body {
   height: 100%;
 }
 
-h1 {
-color: aliceblue;
-  text-align: center;
-  }
+
 </style>

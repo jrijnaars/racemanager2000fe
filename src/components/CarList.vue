@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h2 class="h2">Drivers</h2>
+      <h2>Drivers</h2>
       <car v-for="car in cars" :key="car.id" v-bind:car="car"></car>
     </div>
   </div>
