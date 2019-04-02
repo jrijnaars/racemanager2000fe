@@ -10,13 +10,11 @@
 <script>
 
   import Car from "@/components/Car";
-  import CreateCar from "@/components/CreateCar";
 
   export default {
     name: "CarList",
     components: {
       Car,
-      CreateCar
     },
     props: ['cars'],
   }

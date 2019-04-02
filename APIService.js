@@ -24,8 +24,19 @@ export class APIService {
       return error;
     }
   }
-  // get -> /cars/{id}
-  static getCar(id) {
+  // post -> /season}
+  static createSeason(seasonname) {
+    const url = `${API_URL}/createseason/`;
+    try {
+      return axios.post(url, seasonname).then(response => response.data)
+    } catch (error) {
+      return error;
+    }
+  }
 
+  static getAllSeasons() {
+    const url = `${API_URL}/seasons`;
+
+    return axios.get(url).then(response => response.data);
   }
 }
